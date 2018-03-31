@@ -1,24 +1,38 @@
 require 'rails_helper'
 
 describe 'navigate' do
+  before do
+    @user = FactoryGirl.create(:user)
+    login_as(@user, scope: :user)
+  end
+
 	describe 'index' do
-    it 'can be reached' do
+    before do
       visit posts_path
+    end
+
+    it 'can be reached' do
       expect(page.status_code).to eq(200)
     end
 
     it 'has content of posts' do
-      visit posts_path
       expect(page).to have_content(/Posts/)
+    end
+
+    it 'has a list of posts' do
+      post1 = FactoryGirl.build_stubbed(:post)
+      post2 = FactoryGirl.build_stubbed(:second_post)
+
+      visit posts_path
+      expect(page).to have_content(/Rationale|content/)
     end
   end
 
   describe 'creation' do
     before do
-      user = User.create(email: "test@test.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "Jon", last_name: "Snow")
-      login_as(user, scope: :user)
       visit new_post_path
     end 
+
     it 'has a new form that can be reached' do
       expect(page.status_code).to eq(200)
     end
