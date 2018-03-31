@@ -21,6 +21,7 @@ gem 'devise', '~> 4.3'
 
 # design tools
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+gem "gritter", "1.2.0"
 
 group :development, :test do
   gem 'byebug'
