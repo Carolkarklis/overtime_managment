@@ -19,6 +19,9 @@ gem 'jbuilder', '~> 2.5'
 # authentication tools
 gem 'devise', '~> 4.3'
 
+# design tools
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.0'
